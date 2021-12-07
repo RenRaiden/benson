@@ -1,0 +1,50 @@
+{% extends "layouts.html" %}
+
+{% block content %}
+
+<article class="media content-section">
+    <img class="rounded-circle article-img m-3"
+         style="width: 3%"
+         src="{{ url_for('static', filename='profile_pics/' + flashcard.author.image_file) }}">
+    <a class="mr-2" href="#">{{ flashcard.author.username }}</a> ~~~
+    <small class="text-muted">{{ flashcard.date.strftime('%Y-%m-%d') }}</small>
+    <div class="media-body">
+        <div class="article-metadata">
+
+
+            {% if flashcard.author == current_user %}
+                <div class="m-1">
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1 m-3"
+                       href="{{ url_for('update_flashcard', flashcard_id=flashcard.id) }}">Update</a>
+                    <a class="btn btn-secondary btn-sm mt-1 mb-1"
+                       href="{{ url_for('share_flashcard', flashcard_id=flashcard.id) }}">Share</a>
+                    <a class="btn btn-danger btn-sm mt-1 mb-1 m-3"
+                       href="{{ url_for('delete_flashcard', flashcard_id=flashcard.id) }}">Delete</a>
+                </div>
+            {% endif %}
+        </div>
+    </br>
+    </br>
+
+    <div class='wrapper'
+         style='border: solid black 3px; width: 90%; position: relative; left: 5%; font-size: 25px; display: flex;'>
+        <div style='float: left; width: 50%; height: 100%;'>
+            <p>{{ flashcard.front }}</p>
+        </div>
+        <div style="float: right; width: 50%; height: 100%; border-left: solid black 3px; padding-left: 1%;">
+            <p>{{ flashcard.back }}</p>
+        </div>
+    </div>
+    </br>
+    </div>
+</article>
+
+</br>
+</br>
+
+<a class="btn btn-success btn-sm mt-1 mb-1 m-3" href="{{ url_for('flashcards') }}"> Close </a>
+
+<a class="btn btn-success btn-sm mt-1 mb-1 m-3" href="{{ url_for('flashcard_pdf', flashcard_id=flashcard.id) }}"> Save as PDF </a>
+
+
+{% endblock content %}

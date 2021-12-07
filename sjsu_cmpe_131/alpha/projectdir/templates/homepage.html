@@ -1,0 +1,104 @@
+{% extends 'layouts.html' %}
+
+{% block content %}
+
+    <!-- Header-->
+    <header class="py-5">
+        <div class="container px-lg-6">
+            <div class="p-4 p-lg-5 bg-light rounded-1 text-center">
+                <div class="m-4 m-lg-5">
+                    <h1 class="display-6 fw-bold" t>Save your thoughts, wherever you are</h1>
+                    <p class="fs-4">
+                        Welcome to a place for students to access from all devices to study
+                        more effectively through memorizing, searching notes, and managing
+                        time to avoid distractions over period of their school time
+                    </p>
+                    {% if not current_user.is_authenticated %}
+                    <a class="btn btn-primary btn-lg" href="{{ url_for('registration') }}">Give it a try</a>
+                    {% else %}
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Page Content-->
+    <section class="pt-4 homepage">
+        <div class="container px-lg-5">
+            <!-- Page Features-->
+            <div class="row gx-lg-5">
+
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i
+                                    class="bi bi-collection"></i></div>
+                            <a><h2 class="fs-4 fw-bold">Notes</h2></a> {# a href='/notes' #}
+                            <p class="mb-0">Create notes and share them here!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i
+                                    class="bi bi-cloud-download"></i></div>
+                            <a><h2 class="fs-4 fw-bold">Timer</h2></a> {# a href='/timer' #}
+                            <p class="mb-0">Time yourself and see your progress here!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i
+                                    class="bi bi-card-heading"></i></div>
+                            <a><h2 class="fs-4 fw-bold">Flashcards</h2></a> {# a href='/flashcards' #}
+                            <p class="mb-0">Create flashcards, study, and share them here!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i
+                                    class="bi bi-bootstrap"></i></div>
+                            <a><h2 class="fs-4 fw-bold">Calendar</h2></a>  {# a href='/calendar' #}
+                            <p class="mb-0">Plan out and see your calendar here!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i
+                                    class="bi bi-bootstrap"></i></div>
+                            <a><h2 class="fs-4 fw-bold">Pomodoro</h2></a> {# a href='/pomodoro' #}
+                            <p class="mb-0">Put time and don't get distracted while on task!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-xxl-4 mb-5">
+                    <div class="card bg-light border-0 h-100">
+                        <div class="card-body text-center p-4 p-lg-5 pt-0 pt-lg-0">
+                            <div class="feature bg-primary bg-gradient text-white rounded-3 mb-4 mt-n4"><i
+                                    class="bi bi-bootstrap"></i></div>
+                            <a><h2 class="fs-4 fw-bold">Md to Pdf</h2></a>  {# a href='/markdown-to-pdf' #}
+                            <p class="mb-0">Save your notes as PDF on your local!</p>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </section>
+
+    <script src="{{ url_for('static',filename='main.js') }}"></script>
+
+{% endblock content %}

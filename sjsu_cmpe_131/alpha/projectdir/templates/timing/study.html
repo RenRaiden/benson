@@ -1,0 +1,110 @@
+{#{% extends "layouts.html" %}#}
+{##}
+{#{% block content %}#}
+{##}
+{#    <div class="container justify-content-center">#}
+{#        <h2 class="heading">Study</h2>#}
+{#        <span class="timer" id="timer">{{ study }}s</span>#}
+{#        <progress max="{{ study }}" value="{{ study }}" class="progress study-progress " id="progressBar"></progress>#}
+{#    </div>#}
+{##}
+{##}
+{##}
+{#    <script type="application/javascript">#}
+{#        const timerElement = document.getElementById("timer");#}
+{#        const progressBar = document.getElementById("progressBar")#}
+{#        var timerCounter = progressBar.max;#}
+{#        const interval = setInterval(() => {#}
+{#            if (timerCounter === 0) {#}
+{#                window.location.href = "{{ url_for('rest') }}";#}
+{#                clearInterval(interval);#}
+{#            }#}
+{#            timerCounter = timerCounter - 1;#}
+{##}
+{#            timerElement.innerText = timerCounter + "s";#}
+{#            timerElement.innerText = Math.floor(timerCounter / 60) + ":" + (timerCounter % 60 ? timerCounter % 60 : '00') + "s";#}
+{#            progressBar.value = timerCounter;#}
+{#        }, 1000);#}
+{#    </script>#}
+{##}
+{##}
+{##}
+{#{% endblock %}#}
+
+
+{% extends "layouts.html" %}
+
+{% block content %}
+
+    <div class="container justify-content-center">
+        <h2 class="heading">Study</h2>
+    </div>
+
+<body>
+
+        <div id="work-timer" class="timer">
+            <p id="study">{{ study }}</p><p class="semicolon">:</p><p id="w_seconds">00</p>
+        </div>
+
+        </div>
+        <button id="start" class="btn">Start</button>
+        <button id="stop" class="btn">Pause</button>
+        </div>
+
+</body>
+
+    <script type="application/javascript">
+
+        var start = document.getElementById('start');
+        var stop = document.getElementById('stop');
+
+        var wm = document.getElementById("study");
+        var ws = document.getElementById('w_seconds');
+
+        var startTimer;
+        startTimer = setInterval(timer, 1000)
+
+        start.addEventListener('click', function(){
+            if(startTimer === undefined){
+                startTimer = setInterval(timer, 1000)
+            } else {
+                alert("Timer is already running");
+            }
+        })
+
+        stop.addEventListener('click', function(){
+            stopInterval()
+            startTimer = undefined;
+        })
+
+        function timer(){
+
+            if (wm.innerText == 0 && ws.innerText == 0) {
+                window.location.href = "{{ url_for('rest') }}";
+                {#clearInterval(interval);#}
+            }
+
+            if(ws.innerText != 0){
+                ws.innerText--;
+            } else if(wm.innerText != 0 && ws.innerText == 0){
+                ws.innerText = 59;
+                wm.innerText--;
+            }
+
+            if(wm.innerText == 0 && ws.innerText == 0 && bm.innerText == 0 && bs.innerText == 0){
+                wm.innerText = wm;
+                ws.innerText = "00";
+
+                document.getElementById('counter').innerText++;
+
+            }
+
+        }
+
+        function stopInterval(){
+           clearInterval(startTimer);
+        }
+
+    </script>
+
+{% endblock %}
